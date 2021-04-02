@@ -18,23 +18,20 @@ module.exports = {
         let isAdmin = "";
 
         if (email == null || userName == null || password == null) {
-            return res.status(400).json({ error: "missing parameters" });
+            return res.status(400).json({ error });
         }
 
         if (userName.length >= 21 || userName.length <= 2) {
             return res
-                .status(400)
-                .json({ error: "wrong username (must be length 3 - 20)" });
+                .status(400).json({ error });
         }
 
         if (!emailRegex.test(email)) {
-            return res.status(400).json({ error: "email is not valid" });
+            return res.status(400).json({ error });
         }
 
         if (!passwordRegex.test(password)) {
-            return res.status(400).json({
-                error: "password not valid (must lenght 8 - 20 and include 1 number and 1 uppercase",
-            });
+            return res.status(400).json({ error });
         }
 
         if (req.body.email === "wissal@groupomania.com") { isAdmin = true; } else { isAdmin = false; }
@@ -50,7 +47,7 @@ module.exports = {
                             done(null, userFound);
                         })
                         .catch((err) => {
-                            return res.status(500).json({ error: "unable to verify user" });
+                            return res.status(500).json({ error });
                         });
                 },
                 (userFound, done) => {
@@ -59,7 +56,7 @@ module.exports = {
                             done(null, userFound, bcryptedPassword);
                         });
                     } else {
-                        return res.status(409).json({ error: "user already exist" });
+                        return res.status(409).json({ error });
                     }
                 },
                 (userFound, bcryptedPassword, done) => {
@@ -73,7 +70,7 @@ module.exports = {
                             done(newUser);
                         })
                         .catch((err) => {
-                            return res.status(500).json({ error: "cannot add user" });
+                            return res.status(500).json({ error });
                         });
                 },
             ],
@@ -83,7 +80,7 @@ module.exports = {
                         userId: newUser.id,
                         userName: newUser.userName,
                     });
-                } else { return res.status(500).json({ error: "cannot add user" }); }
+                } else { return res.status(500).json({ error }); }
             }
         );
     },
@@ -94,7 +91,7 @@ module.exports = {
         let password = req.body.password;
 
         if (email == null || password == null) {
-            return res.status(400).json({ error: "missing parameters" });
+            return res.status(400).json({ error });
         }
 
         asyncLib.waterfall(
@@ -107,7 +104,7 @@ module.exports = {
                             done(null, userFound);
                         })
                         .catch((err) => {
-                            return res.status(500).json({ error: "unable to verify user" });
+                            return res.status(500).json({ error });
                         });
                 },
                 (userFound, done) => {
@@ -122,14 +119,14 @@ module.exports = {
                     } else {
                         return res
                             .status(404)
-                            .json({ error: "user does not exist in the database" });
+                            .json({ error });
                     }
                 },
                 (userFound, resBcrypt, done) => {
                     if (resBcrypt) {
                         done(userFound);
                     } else {
-                        return res.status(403).json({ error: "invalid password" });
+                        return res.status(403).json({ error });
                     }
                 },
             ],
@@ -142,7 +139,7 @@ module.exports = {
                         token: jwtUtils.generateTokenForUser(userFound),
                     });
                 } else {
-                    return res.status(500).json({ error: "cannot log on user" });
+                    return res.status(500).json({ error });
                 }
             }
         );
@@ -165,7 +162,7 @@ module.exports = {
         let headerAuth = req.headers["authorization"];
         let userId = jwtUtils.getUserId(headerAuth);
 
-        if (userId < 0) return res.status(400).json({ error: "wrong token" });
+        if (userId < 0) return res.status(400).json({ error });
         // Parameters
         let userName = req.body.userName;
 
@@ -180,7 +177,7 @@ module.exports = {
                             done(null, userFound);
                         })
                         .catch((err) => {
-                            return res.status(500).json({ error: "unable to verify user" });
+                            return res.status(500).json({ error });
                         });
                 },
                 (userFound, done) => {
@@ -193,10 +190,10 @@ module.exports = {
                                 done(userFound);
                             })
                             .catch((err) => {
-                                res.status(500).json({ error: "cannot update user" });
+                                res.status(500).json({ error });
                             });
                     } else {
-                        res.status(404).json({ error: "user not found" });
+                        res.status(404).json({ error });
                     }
                 },
             ],
@@ -204,7 +201,7 @@ module.exports = {
                 if (userFound) {
                     return res.status(201).json(userFound);
                 } else {
-                    return res.status(500).json({ error: "cannot update user profile" });
+                    return res.status(500).json({ error });
                 }
             }
         );
@@ -215,7 +212,7 @@ module.exports = {
     allUsers: (req, res) => {
         models.User.findAll()
             .then((users) => { res.status(200).json(users); })
-            .catch((error) => { res.status(400).json({ error: error }); });
+            .catch((error) => { res.status(400).json({ error }); });
     },
 
     // Delete Profile 

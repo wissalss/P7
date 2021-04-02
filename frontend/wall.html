@@ -38,16 +38,19 @@
             <main>
                 <div id="new-post">
                     <form id="newPostForm">
-                        <input id="title" class="new_post_col" name="title" placeholder="Titre ?"></input>
+                        <input id="title" class="new_post_col" name="title" placeholder="Titre "></input>
                         <textarea id="texte" class="new_post_col" name="texte" placeholder="Que voulez-vous dire ?"></textarea>
+
                         <div class="inputs">
                             <input id="imageUrl" name="imageUrl" class="newinput" type="file" accept="image/png, image/jpeg, image/jpg, image/gif">
                             <input id="submit-new-post" type="submit" class="submit newinput" value="Publier">
                         </div>
+
                     </form>
                 </div>
 
                 <div id="posts"></div>
+                <div id="coms"></div>
             </main>
 
             <section id="modify-post"></section>
@@ -62,6 +65,7 @@
     <!-- JavaScript -->
     <script src="js/wall.js"></script>
     <script src="js/global.js"></script>
+    <script src="js/coms.js"></script>
 
 
     <!--        lien bootstrap et Jquery -->

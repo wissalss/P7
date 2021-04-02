@@ -1,6 +1,7 @@
 // Imports
 const models = require("../models");
 const asyncLib = require("async");
+const fs = require('fs');
 
 // Constants
 const titleLimit = 2;
@@ -17,16 +18,17 @@ module.exports = {
         let texte = req.body.texte;
 
         if (title == null || texte == null) {
-            return res.status(400).json({ error: "missing parameters" });
+            return res.status(400).json({ error });
         }
         if (title.length <= titleLimit || texte.length <= texteLimit) {
-            return res.status(400).json({ error: "invalid parameters" });
+            return res.status(400).json({ error });
         }
         const post = {
             UserId: req.body.UserId,
             by: req.body.userName,
             title: title,
             texte: texte,
+            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
         };
         models.Post.create(post)
             .then((post) => { res.status(201).json(post); })
@@ -43,7 +45,7 @@ module.exports = {
                 }, ],
             })
             .then((posts) => { res.status(200).json(posts); })
-            .catch((error) => { res.status(400).json({ error: error }); });
+            .catch((error) => { res.status(400).json({ error }); });
     },
 
     // Get One Post 
@@ -61,7 +63,7 @@ module.exports = {
             })
             .then((post) => res.status(200).json(post))
             .catch((err) =>
-                res.status(404).json({ error: "cannot find this post" })
+                res.status(404).json({ error })
             );
     },
 

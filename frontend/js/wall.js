@@ -45,7 +45,7 @@ document.getElementById('submit-new-post').addEventListener('submit', async(e) =
             alert('Post créé ')
             window.location.reload()
         } else {
-            alert('Erreur ' + response.status + '. Veuillez réessayer')
+            alert('Erreur ' + response.status + '. Can not create post')
         }
 
     }
@@ -68,7 +68,7 @@ const getPostData = async() => {
             displayPosts(posts[i - 1]);
         }
     } else {
-        alert('Erreur ' + response.status + '. Veuillez réessayer')
+        alert('Erreur ' + response.status + '. Can not display posts')
     }
 }
 getPostData();
