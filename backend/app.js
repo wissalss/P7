@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const usersRouter = require("./routes/user").router;
 const postsRouter = require("./routes/posts").router;
-const comsRouter = require("./routes/coms").router;
+const comsRouter = require("./routes/coms");
 const path = require('path');
 require('dotenv').config();
 

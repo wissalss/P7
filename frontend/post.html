@@ -39,17 +39,18 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="signup.html" id="reg">Signup</a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="login.html" id="auth">Login</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="post.html" id="post">Poster un article</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html" id="deco">Deconnexion</a>
+                                <a class="nav-link" href="index.html" id="deco">Deconnexion </a>
                             </li>
                             <li class="nav-item">
-                                <button class="btn btn-danger c-white ml-2" id="suppr">Supprimer le compte</button>
+                                <a class="nav-link" href="profile.html" id="pro"> Profile </a>
+
                             </li>
                         </ul>
                     </div>
@@ -60,27 +61,28 @@
     <!---Header END-->
 
     <!---Content-->
-    <div class="container mt-4" id="formlogin">
+    <div class="container mt-4">
         <div class="card col-lg-12 col-mg-12 center-block">
-            <div class="connform">
+            <div class="mt-4 mb-4">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    <label for="title">Titre</label>
+                    <input type="text" class="form-control" id="title" placeholder="Titre" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de Passe</label>
-                    <input type="password" class="form-control" id="password" placeholder="Mot de Passe" required>
+                    <label for="text">Texte</label>
+                    <input type="text" class="form-control" id="text" placeholder="Texte" required>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2 btnConn" id="submit">Login</button>
-                <div class="mt-3">
-                    <a href="signup.html">Vous n'avez pas de compte ? Inscrivez-vous.</a>
+                <div class="form-group">
+                    <label for="imageurl">Image</label>
+                    <input type="file" class="form-control post" id="imageurl">
                 </div>
+                <button type="submit" class="btn btn-primary" id="submit">Poster</button>
             </div>
         </div>
 
-        <script src="JS/login.js"></script>
+        <script src="JS/post.js"></script>
         <script src="JS/auth.js"></script>
-        <script src="JS/accountsuppr.js"></script>
+
 
     </div>
     <!---Content END-->

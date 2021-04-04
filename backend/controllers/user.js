@@ -104,7 +104,7 @@ module.exports = {
                             done(null, userFound);
                         })
                         .catch((err) => {
-                            return res.status(500).json({ error });
+                            return res.status(500).json({ err });
                         });
                 },
                 (userFound, done) => {
@@ -190,7 +190,7 @@ module.exports = {
                                 done(userFound);
                             })
                             .catch((err) => {
-                                res.status(500).json({ error });
+                                res.status(500).json({ err });
                             });
                     } else {
                         res.status(404).json({ error });

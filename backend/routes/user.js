@@ -9,7 +9,7 @@ exports.router = (() => {
     // Routes assignations
     usersRouter.post("/auth/signup", usersCtrl.signup);
     usersRouter.post("/auth/login", usersCtrl.login);
-    usersRouter.get("/auth/", usersCtrl.allUsers);
+    usersRouter.get("/auth", usersCtrl.allUsers);
     usersRouter.get("/auth/:id", usersCtrl.profile);
     usersRouter.put("/auth/:id", usersCtrl.updateProfile);
     usersRouter.delete("/auth/:id", usersCtrl.deleteProfile);

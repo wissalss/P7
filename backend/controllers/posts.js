@@ -17,18 +17,11 @@ module.exports = {
         let title = req.body.title;
         let texte = req.body.texte;
 
-        if (title == null || texte == null) {
-            return res.status(400).json({ error });
-        }
-        if (title.length <= titleLimit || texte.length <= texteLimit) {
-            return res.status(400).json({ error });
-        }
         const post = {
             UserId: req.body.UserId,
             by: req.body.userName,
             title: title,
             texte: texte,
-            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
         };
         models.Post.create(post)
             .then((post) => { res.status(201).json(post); })
