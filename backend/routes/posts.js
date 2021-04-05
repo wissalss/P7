@@ -1,18 +1,15 @@
 // Imports
 const express = require("express");
+const router = express.Router();
+
 const postsCtrl = require("../controllers/posts");
 const auth = require('../middleware/auth');
+const multer = require("../middleware/multer-config");
 
-// Router
-exports.router = (() => {
-    let postsRouter = express.Router();
+// Routes assignations
+router.post("/posts", auth, multer, postsCtrl.createPost);
+router.get("/posts", auth, postsCtrl.listPosts);
+router.put("/posts/:id", auth, multer, postsCtrl.modifyPost);
+router.delete("/posts/:id", auth, postsCtrl.deletePost);
 
-    // Routes assignations
-    postsRouter.post("/posts", postsCtrl.createPost);
-    postsRouter.get("/posts", postsCtrl.listPosts);
-    postsRouter.get("/posts/:id", postsCtrl.onePost);
-    postsRouter.put("/posts/:id", postsCtrl.modifyPost);
-    postsRouter.delete("/posts/:id", postsCtrl.deletePost);
-
-    return postsRouter;
-})();
+module.exports = router;

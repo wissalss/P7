@@ -8,8 +8,8 @@ function prepareCom() {
 
             var data = {
                 com: {
-                    postId: this.dataset["id"],
-                    userId: localStorage.getItem("userId"),
+                    PostId: this.dataset["id"],
+                    UserId: localStorage.getItem("userId"),
                     by: localStorage.getItem("UserName"),
                     text: cominput.value
                 }

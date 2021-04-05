@@ -22,13 +22,13 @@ request("posts", 200, "GET", null, [{ key: "Authorization", value: "Bearer " + l
         p.setAttribute("class", "card-text");
         p.innerHTML = post.texte; //Texte du post
         card.appendChild(p);
-
-        const img = document.createElement("img");
-        img.setAttribute("src", post.imageUrl); //Image du post
-        img.setAttribute("class", "card-img-top mt-1 mb-3");
-        img.setAttribute("alt", "Image liée à l'article");
-        card.appendChild(img);
-
+        if (!post.imageUrl) {
+            const img = document.createElement("img");
+            img.setAttribute("src", post.imageUrl); //Image du post
+            img.setAttribute("class", "card-img-top mt-1 mb-3");
+            img.setAttribute("alt", "Image liée à l'article");
+            card.appendChild(img);
+        }
         const list = document.getElementById("listPosts");
         list.appendChild(card);
 
@@ -67,7 +67,7 @@ request("posts", 200, "GET", null, [{ key: "Authorization", value: "Bearer " + l
         }
         isAdmin = localStorage.getItem("isAdmin");
 
-        if (localStorage.getItem("isAdmin") == "true") {
+        if (localStorage.getItem("isAdmin") == "true" && localStorage.getItem("userId") != post.userId) {
 
             const divbutton = document.createElement("div");
             divbutton.setAttribute("class", "mb-3 btndiv");

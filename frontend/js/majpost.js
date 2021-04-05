@@ -17,14 +17,14 @@ modelt.addEventListener('click', function() {
     var inputTitle = document.getElementById("title");
     var inputText = document.getElementById("text");
     var inputImageURL = document.getElementById("imageurl");
-    var userId = localStorage.getItem("postUserId");
+    var UserId = localStorage.getItem("postUserId");
 
     var data = new FormData();
     var updtpost = {
         title: inputTitle.value,
         texte: inputText.value,
         id: id,
-        userId: userId
+        UserId: UserId
     };
 
     data.append("post", JSON.stringify(updtpost));

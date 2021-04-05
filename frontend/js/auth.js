@@ -15,13 +15,17 @@ window.addEventListener("load", function(event) {
         signup.classList.add('d-none');
         deco.classList.remove('d-none');
         post.classList.remove('d-none');
-        suppr.classList.remove('d-none');
+        if (suppr) {
+            suppr.classList.remove('d-none');
+        }
     } else {
         login.classList.remove('d-none');
         signup.classList.remove('d-none');
         deco.classList.add('d-none');
         post.classList.add('d-none');
-        suppr.classList.add('d-none');
+        if (suppr) {
+            suppr.classList.add('d-none');
+        }
     }
 
 });
@@ -34,4 +38,3 @@ deco.addEventListener('click', function(event) {
     localStorage.removeItem("UserName");
     window.location.assign("index.html");
 });
-

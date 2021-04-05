@@ -1,10 +1,9 @@
-const Coms = require('../models/Coms');
+const models = require("../models");
 
-/* CREATE ONE COM */
 exports.createCom = (req, res, next) => {
     // console.log(req.body);
     let combody = req.body.com;
-    const com = new Coms({
+    const com = new models.Coms({
         ...combody
     });
     com.save()
