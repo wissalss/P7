@@ -1,9 +1,9 @@
 P7 Groupomania 
 ____________
-Pour faire tourner le backend : 
+Backend : 
 - 'npm install' 
 - Add your database password "conjig.json"
 - 'node server.js'
 _____________
- Pour faire tourner le frontend :
+ Frontend :
 - open "index.html"
