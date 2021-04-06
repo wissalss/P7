@@ -28,7 +28,7 @@ modelt.addEventListener('click', function() {
     };
 
     data.append("post", JSON.stringify(updtpost));
-    data.append("imageurl", inputImageURL.files[0]);
+    data.append("imageUrl", inputImageURL.files[0]);
 
     request("posts/" + id, 201, "PUT", data, [{ key: "Authorization", value: "Bearer " + localStorage.getItem("Token") }]).then(function(data) {
         localStorage.removeItem("title");

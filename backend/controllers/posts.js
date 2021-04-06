@@ -1,10 +1,7 @@
 // Imports
 const models = require("../models");
 const Posts = require("../models/post");
-const asyncLib = require("async");
 const fs = require('fs');
-const multer = require('multer');
-const path = require('path');
 
 // Création Post 
 
@@ -12,7 +9,7 @@ exports.createPost = (req, res, next) => {
         let postbody = JSON.parse(req.body.post);
         const post = new models.Post({
             ...postbody,
-            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         });
         post.save()
             .then(() => res.status(201).json({ message: 'Post enregistré !' }))

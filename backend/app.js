@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(helmet());
-app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use("/api/", postsRouter);
 app.use("/api/", usersRouter);
 app.use("/api/", comsRouter);
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 module.exports = app;

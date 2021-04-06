@@ -22,13 +22,16 @@ request("posts", 200, "GET", null, [{ key: "Authorization", value: "Bearer " + l
         p.setAttribute("class", "card-text");
         p.innerHTML = post.texte; //Texte du post
         card.appendChild(p);
-        if (!post.imageUrl) {
+
+
+        if (post.imageUrl) {
             const img = document.createElement("img");
             img.setAttribute("src", post.imageUrl); //Image du post
             img.setAttribute("class", "card-img-top mt-1 mb-3");
             img.setAttribute("alt", "Image liée à l'article");
             card.appendChild(img);
         }
+
         const list = document.getElementById("listPosts");
         list.appendChild(card);
 

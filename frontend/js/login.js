@@ -33,7 +33,7 @@ elt.addEventListener('click', function() {
             localStorage.setItem("UserName", data.userName);
             window.location.assign("index.html");
         }).catch((error) => {
-            console.log(error);
+            console.log("invalid Email or Password");
         });
     }
 
